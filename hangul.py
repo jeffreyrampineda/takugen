@@ -5,7 +5,7 @@ vowels = [' ', 'a', 'e', 'i', 'o', 'u', 'y']
 # primary requires no vowels
 # secondary require vowels
 
-unicodeTable = {
+unicode_table = {
     'a': {
         'primary': '1161',
         'secondary': '110b1161',

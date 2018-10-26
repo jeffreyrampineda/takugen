@@ -2,13 +2,14 @@ from pynput import keyboard
 import translatorHelper
 import settings
 import hangul
+import hiragana
 
 # error - backspace is pressed once extra. cause is unknown
 #         cannot pinpoint within the program.
 #         must be bug in pynput module
 
 helper = translatorHelper.TranslatorHelper()
-helper.language = translatorHelper.Language(hangul.name, hangul.vowels)
+helper.language = translatorHelper.Language(hiragana.name, hiragana.vowels, hiragana.unicode_table)
 
 def on_press(key):
     if isinstance(key, keyboard._xorg.KeyCode) and key.char == '.':
@@ -16,10 +17,10 @@ def on_press(key):
     # do if the program is not typing unicodes
     if not helper.isTypingUnicode and isinstance(key, keyboard._xorg.KeyCode):
         try:
-            romanKey, tr_unicode = key.char, hangul.unicodeTable[key.char]
+            romanKey, tr_unicode = key.char, helper.language._unicode_table[key.char]
 
             # a consonant
-            if romanKey not in hangul.vowels:
+            if romanKey not in helper.language._vowels:
                 helper.translateKeyPress(romanKey, tr_unicode)
             # a vowel
             else:

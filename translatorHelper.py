@@ -6,9 +6,10 @@ import settings
 # TODO - use async/await for all typings
 
 class Language:
-    def __init__(self, language='none', vowels=[]):
+    def __init__(self, language='none', vowels=[], unicode_table={}):
         self._language = language
         self._vowels = vowels
+        self._unicode_table = unicode_table
 
 class TranslatorHelper:
     controller = Controller()
