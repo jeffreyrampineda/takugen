@@ -8,8 +8,11 @@ import hiragana
 #         cannot pinpoint within the program.
 #         must be bug in pynput module
 
+ko_ha = translatorHelper.Language(hangul.name, hangul.vowels, hangul.unicode_table)
+ja_hi = translatorHelper.Language(hiragana.name, hiragana.vowels, hiragana.unicode_table)
+
 helper = translatorHelper.TranslatorHelper()
-helper.language = translatorHelper.Language(hiragana.name, hiragana.vowels, hiragana.unicode_table)
+helper.language = ja_hi
 
 def on_press(key):
     if isinstance(key, keyboard._xorg.KeyCode) and key.char == '.':

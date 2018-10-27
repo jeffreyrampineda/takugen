@@ -1,7 +1,7 @@
 from pynput.keyboard import Key, Controller
 from collections import deque
 import settings
-# import asyncio
+import time
 
 # TODO - use async/await for all typings
 
@@ -16,10 +16,12 @@ class TranslatorHelper:
     isTypingUnicode = False
     previousKeys = deque([' ',' ',' '])
     language = None
+    previousCharCount = 1
 
     def removeCurrentCharacter(self, currentKey):
         self.controller.release(currentKey)
         self.keyTap(Key.backspace)
+        time.sleep(0.1)
 
     def unicodeTyper(self, tr_unicode):
         self.isTypingUnicode = True
@@ -48,10 +50,12 @@ class TranslatorHelper:
 
         # used for single hangul jama
         if len(tr_unicode) == 4:
+            self.previousCharCount = 1
             self.unicodeTyper(tr_unicode)
 
         # used for double hangul jama
         else:
+            self.previousCharCount = 2
             self.unicodeTyper(tr_unicode[0:4])
             self.unicodeTyper(tr_unicode[4:])
 
@@ -72,8 +76,25 @@ class TranslatorHelper:
             
             # Try for 3-keys combinations
             if self.previousKeys[1] in tr_unicode[self.previousKeys[2]]:
+
+                # time.sleep() provides enough time for OS to receive backspace event
+                if self.previousCharCount == 2:
+                    self.keyTap(Key.backspace)
+                    time.sleep(0.1)
+                self.keyTap(Key.backspace)
+                time.sleep(0.1)
+                self.keyTap(Key.backspace)
+                time.sleep(0.1)
+
                 return tr_unicode[self.previousKeys[2]][self.previousKeys[1]]
             else:
+                # time.sleep() provides enough time for OS to receive backspace event
+                if self.previousCharCount == 2:
+                    self.keyTap(Key.backspace)
+                    time.sleep(0.1)
+                self.keyTap(Key.backspace)
+                time.sleep(0.1)
+
                 return tr_unicode[self.previousKeys[2]]
 
         # Default to single key press
