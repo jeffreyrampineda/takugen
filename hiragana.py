@@ -2,9 +2,6 @@ name = 'hiragana'
 
 vowels = [' ', 'a', 'e', 'i', 'o', 'u']
 
-# primary requires no vowels
-# secondary require vowels
-
 unicode_table = {
     'a': {
         'primary': '3042',

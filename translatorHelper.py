@@ -1,9 +1,6 @@
 from pynput.keyboard import Key, Controller
 from collections import deque
-import settings
 import time
-
-# TODO - use async/await for all typings
 
 class Language:
     def __init__(self, language='none', vowels=[], unicode_table={}):
