@@ -6,7 +6,7 @@ import hiragana
 import katakana
 
 helper = translatorHelper.TranslatorHelper()
-helper.language = hangul.Hangul
+helper.language = hiragana.Hiragana
 
 def on_press(key):
     if isinstance(key, keyboard._xorg.KeyCode) and key.char == '.':
