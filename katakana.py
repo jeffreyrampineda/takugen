@@ -22,6 +22,24 @@ Katakana._unicode_table = {
         'b': { 'primary': '30d0' },
         'p': { 'primary': '30d1' }
     },
+    'i': { 
+        'primary': '30a4',
+        'w': { 'primary': '30f0' },
+        'r': { 'primary': '30ea' },
+        'm': { 'primary': '30df' },
+        'h': { 
+            'primary': '30d2',
+            'c': { 'primary': '30c1' },
+            's': { 'primary': '30b7' },
+        },
+        'n': { 'primary': '30cb' },
+        'k': { 'primary': '30ad' },
+        'g': { 'primary': '30ae' },
+        'j': { 'primary': '30b8' },
+        'd': { 'primary': '30c2' },
+        'b': { 'primary': '30d3' },
+        'p': { 'primary': '30d4' }
+    },
     'b': { 'primary': '0062' },
     'c': { 'primary': '0063' },
     'd': { 'primary': '0064' },
@@ -29,7 +47,6 @@ Katakana._unicode_table = {
     'f': { 'primary': '0066' },
     'g': { 'primary': '0067' },
     'h': { 'primary': '0068' },
-    'i': { 'primary': '30a4' },
     'j': { 'primary': '006a' },
     'k': { 'primary': '006B' },
     'm': { 'primary': '006D' },
