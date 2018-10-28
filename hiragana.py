@@ -1,8 +1,10 @@
-name = 'hiragana'
+from translatorHelper import Language
 
-vowels = [' ', 'a', 'e', 'i', 'o', 'u']
+Hiragana = Language(__name__)
 
-unicode_table = {
+Hiragana._vowels = [' ', 'a', 'e', 'i', 'o', 'u']
+
+Hiragana._unicode_table = {
     'a': {
         'primary': '3042',
         'secondary': '3042',

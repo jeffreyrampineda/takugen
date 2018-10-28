@@ -1,11 +1,13 @@
-name = 'hangul'
+from translatorHelper import Language
 
-vowels = [' ', 'a', 'e', 'i', 'o', 'u', 'y']
+Hangul = Language(__name__)
+
+Hangul._vowels = [' ', 'a', 'e', 'i', 'o', 'u', 'y']
 
 # primary requires no vowels
 # secondary require vowels
 
-unicode_table = {
+Hangul._unicode_table = {
     'a': {
         'primary': '1161',
         'secondary': '110b1161',

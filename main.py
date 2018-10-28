@@ -5,12 +5,8 @@ import hangul
 import hiragana
 import katakana
 
-ko_ha = translatorHelper.Language(hangul.name, hangul.vowels, hangul.unicode_table)
-ja_hi = translatorHelper.Language(hiragana.name, hiragana.vowels, hiragana.unicode_table)
-ja_ka = translatorHelper.Language(katakana.name, katakana.vowels, katakana.unicode_table)
-
 helper = translatorHelper.TranslatorHelper()
-helper.language = ja_ka
+helper.language = hangul.Hangul
 
 def on_press(key):
     if isinstance(key, keyboard._xorg.KeyCode) and key.char == '.':

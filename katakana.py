@@ -1,8 +1,10 @@
-name = 'katakana'
+from translatorHelper import Language
 
-vowels = [' ', 'a', 'e', 'i', 'o', 'u']
+Katakana = Language(__name__)
 
-unicode_table = {
+Katakana._vowels = [' ', 'a', 'e', 'i', 'o', 'u']
+
+Katakana._unicode_table = {
     'a': {
         'primary': '30a2',
         'secondary': '30a2',
