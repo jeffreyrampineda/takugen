@@ -1,6 +1,6 @@
 from translatorHelper import Language
 
-Hangul = Language(__name__)
+Hangul = Language(__name__, hasSecondary=True)
 
 Hangul._vowels = [' ', 'a', 'e', 'i', 'o', 'u', 'y']
 
