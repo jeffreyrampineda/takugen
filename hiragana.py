@@ -22,6 +22,24 @@ Hiragana._unicode_table = {
         'b': { 'primary': '3070' },
         'p': { 'primary': '3071' }
     },
+    'i': { 
+        'primary': '3044',
+        'w': { 'primary': '3090' },
+        'r': { 'primary': '308a' },
+        'm': { 'primary': '307f' },
+        'h': { 
+            'primary': '3072',
+            'c': { 'primary': '3061' },
+            's': { 'primary': '3057' },
+        },
+        'n': { 'primary': '306b' },
+        'k': { 'primary': '304d' },
+        'g': { 'primary': '304e' },
+        'j': { 'primary': '3058' },
+        'd': { 'primary': '3062' },
+        'b': { 'primary': '3073' },
+        'p': { 'primary': '3074' }
+    },
     'b': { 'primary': '0062' },
     'c': { 'primary': '0063' },
     'd': { 'primary': '0064' },
@@ -29,7 +47,6 @@ Hiragana._unicode_table = {
     'f': { 'primary': '0066' },
     'g': { 'primary': '0067' },
     'h': { 'primary': '0068' },
-    'i': { 'primary': '3044' },
     'j': { 'primary': '006a' },
     'k': { 'primary': '006B' },
     'm': { 'primary': '006D' },
