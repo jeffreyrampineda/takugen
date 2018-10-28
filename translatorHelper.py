@@ -3,10 +3,11 @@ from collections import deque
 import time
 
 class Language:
-    def __init__(self, language='none', vowels=[], unicode_table={}):
+    def __init__(self, language='none', vowels=[], unicode_table={}, hasSecondary=False):
         self._language = language
         self._vowels = vowels
         self._unicode_table = unicode_table
+        self._hasSecondary = hasSecondary
 
 class TranslatorHelper:
     controller = Controller()
@@ -41,7 +42,8 @@ class TranslatorHelper:
 
     def translateKeyPress(self, keyPress, tr_unicode):
         tr_unicode = self.checkForCombination(keyPress, tr_unicode)
-        tr_unicode = self.selectPrimaryOrSecondary(keyPress, tr_unicode)
+
+        tr_unicode = tr_unicode['primary'] if not self.language._hasSecondary else self.selectPrimaryOrSecondary(keyPress, tr_unicode)
 
         self.removeCurrentCharacter(keyPress)
 
