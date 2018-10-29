@@ -14,14 +14,9 @@ def on_press(key):
     # do if the program is not typing unicodes
     if not helper.isTypingUnicode and isinstance(key, keyboard._xorg.KeyCode):
         try:
-            romanKey, tr_unicode = key.char, helper.language._unicode_table[key.char]
+            tr_key, tr_unicode = key.char, helper.language._unicode_table[key.char]
 
-            # a consonant
-            if romanKey not in helper.language._vowels:
-                helper.translateKeyPress(romanKey, tr_unicode)
-            # a vowel
-            else:
-                helper.translateKeyPress(romanKey, tr_unicode)
+            helper.translateKeyPress(tr_key, tr_unicode)
                     
             helper.previousKeys.popleft()
             helper.previousKeys.append(key.char)
