@@ -91,6 +91,7 @@ Katakana._unicode_table = {
         'b': { 'primary': '30dc' },
         'p': { 'primary': '30dd' }
     },
+    'n': { 'primary': '30f3' },
     'b': { 'primary': '0062' },
     'c': { 'primary': '0063' },
     'd': { 'primary': '0064' },
@@ -100,7 +101,6 @@ Katakana._unicode_table = {
     'j': { 'primary': '006a' },
     'k': { 'primary': '006B' },
     'm': { 'primary': '006D' },
-    'n': { 'primary': '006E' },
     'p': { 'primary': '0070' },
     'r': { 'primary': '0072' },
     's': { 'primary': '0073' },
