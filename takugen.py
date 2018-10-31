@@ -9,7 +9,7 @@ class Language:
         self._unicode_table = unicode_table
         self._hasSecondary = hasSecondary
 
-class TranslatorHelper:
+class Translator:
     controller = Controller()
     isTypingUnicode = False
     previousKeys = deque([' ',' ',' '])
@@ -62,7 +62,7 @@ class TranslatorHelper:
         self.controller.press(key)
         self.controller.release(key)
 
-    # returns primary or 
+    # returns primary or secondary
     def selectPrimaryOrSecondary(self, keyPress, tr_unicode):
         if self.previousKeys[2] in self.language._vowels:
             return tr_unicode['secondary']

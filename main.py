@@ -1,29 +1,28 @@
 from pynput import keyboard
-import translatorHelper
+from takugen import Translator
 import settings
 import hangul
 import hiragana
 import katakana
 
-helper = translatorHelper.TranslatorHelper()
-helper.language = hiragana.Hiragana
+translator = Translator()
+translator.language = hiragana.Hiragana
 
 def on_press(key):
-    if isinstance(key, keyboard._xorg.KeyCode) and key.char == '.':
-        print(helper.previousKeys)
-    # do if the program is not typing unicodes
-    if not helper.isTypingUnicode and isinstance(key, keyboard._xorg.KeyCode):
-        try:
-            tr_key, tr_unicode = key.char, helper.language._unicode_table[key.char]
 
-            helper.translateKeyPress(tr_key, tr_unicode)
+    # do if the program is not typing unicodes
+    if not translator.isTypingUnicode and isinstance(key, keyboard._xorg.KeyCode):
+        try:
+            tr_key, tr_unicode = key.char, translator.language._unicode_table[key.char]
+
+            translator.translateKeyPress(tr_key, tr_unicode)
                     
-            helper.previousKeys.popleft()
-            helper.previousKeys.append(key.char)
+            translator.previousKeys.popleft()
+            translator.previousKeys.append(key.char)
         except KeyError:
             print("cannot find key '{0}' in table".format(key.char))
         if settings.APP_CONFIG['DEBUG']:
-            print('previousKeys: ' + str(helper.previousKeys))
+            print('previousKeys: ' + str(translator.previousKeys))
 
 def on_release(key):
     if key == keyboard.Key.esc:

@@ -1,4 +1,4 @@
-from translatorHelper import Language
+from takugen import Language
 
 Katakana = Language(__name__)
 

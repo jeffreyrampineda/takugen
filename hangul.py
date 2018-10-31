@@ -1,4 +1,4 @@
-from translatorHelper import Language
+from takugen import Language
 
 Hangul = Language(__name__, hasSecondary=True)
 
