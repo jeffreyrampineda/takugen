@@ -4,9 +4,11 @@ import settings
 import hangul
 import hiragana
 import katakana
-
+ 
 translator = Translator()
 translator.language = hiragana.Hiragana
+
+print('Takugen running... ESC to quit')
 
 def on_press(key):
 
