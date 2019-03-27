@@ -1,6 +1,9 @@
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Key, Controller, Listener
+from pynput import keyboard
 from collections import deque
 import time
+import threading
+import settings
 
 class Language:
     def __init__(self, language='none', vowels=[], unicode_table={}, hasSecondary=False):
@@ -9,12 +12,16 @@ class Language:
         self._unicode_table = unicode_table
         self._hasSecondary = hasSecondary
 
-class Translator:
+class Translator(threading.Thread):
     controller = Controller()
     isTypingUnicode = False
     previousKeys = deque([' ',' ',' '])
     language = None
     previousCharCount = 1
+    _is_running = False
+    def __init__(self, language):
+        threading.Thread.__init__(self)
+        self.language = language
 
     def removeCurrentCharacter(self, currentKey):
         self.controller.release(currentKey)
@@ -99,3 +106,36 @@ class Translator:
         # Default to single key press
         else:
             return tr_unicode
+
+    def on_press(self, key):
+
+        # do if the program is not typing unicodes
+        if not self.isTypingUnicode and isinstance(key, keyboard._xorg.KeyCode) and not (type(self.language) is None):
+            try:
+                tr_key, tr_unicode = key.char, self.language._unicode_table[key.char]
+
+                self.translateKeyPress(tr_key, tr_unicode)
+                        
+                self.previousKeys.popleft()
+                self.previousKeys.append(key.char)
+            except KeyError:
+                print("cannot find key '{0}' in table".format(key.char))
+            if settings.APP_CONFIG['DEBUG']:
+                print('previousKeys: ' + str(self.previousKeys))
+
+    def on_release(self, key):
+        if key == Key.esc:
+            self.stop()
+            return False
+    def stop(self):
+        print("Stopping")
+        self._is_running = False
+    def run(self):
+        print(f'Starting {self.language._language}')
+        self._is_running = True
+
+        while(self._is_running):
+            # Collect events until released
+            with Listener(on_press=self.on_press, on_release=self.on_release) as listener:
+                listener.join()
+        print("Task finished")
