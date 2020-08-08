@@ -1,19 +1,5 @@
 # Takugen
 
-Key press character translator
+Translates keystrokes to the specified language in relation to the English alphabet's phonetics.
 
-## Requirements
-
-* docker 18.03.1-ce or later
-
-## Build
-
-``` bash
-docker build --tag=takugen .
-```
-
-## Run
-
-``` bash
-docker run --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" takugen:latest
-```
+Example, katakana: (ka) (ta) (ka) (na) -> カ タ カ ナ
