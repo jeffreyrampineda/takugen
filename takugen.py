@@ -31,21 +31,10 @@ class Translator(threading.Thread):
     def unicodeTyper(self, tr_unicode):
         self.isTypingUnicode = True
 
-        self.pressCombination(Key.ctrl, Key.shift, 'u')
-        self.releaseCombination(Key.ctrl, Key.shift, 'u')
-        self.controller.type(tr_unicode)
-        self.keyTap(Key.enter)
+        with self.controller.pressed(Key.ctrl), self.controller.pressed(Key.shift):
+            self.controller.type('u'+tr_unicode)
 
         self.isTypingUnicode = False
-        return
-
-    def pressCombination(self, *keys):
-        for key in keys:
-            self.controller.press(key)
-
-    def releaseCombination(self, *keys):
-        for key in keys:
-            self.controller.release(key)
 
     def translateKeyPress(self, keyPress, tr_unicode):
         tr_unicode = self.checkForCombination(keyPress, tr_unicode)
